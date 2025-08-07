@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarea-k <bvarea-k@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: bgo <bgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 09:12:02 by bvarea-k          #+#    #+#             */
-/*   Updated: 2025/08/07 14:25:54 by bvarea-k         ###   ########.fr       */
+/*   Updated: 2025/08/07 16:42:54 by bgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	**read_map_file(const char *file, t_game *game)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		map_error(game, "Could not open the map");
+		map_error(game, "Could not open the map.");
 	joined = read_and_join_lines(fd);
 	close(fd);
 	if (!joined || joined[0] == '\0')
@@ -86,16 +86,16 @@ void	ft_init_game(t_game *game)
 	game->mlx = mlx_init(game->width * TILE_SIZE,
 			game->height * TILE_SIZE, "so_long", true);
 	if (!game->mlx)
-		map_error(game, "Failed to initialize MLX");
+		map_error(game, "Failed to initialize MLX.");
 	if (!load_images(game))
 	{
 		mlx_terminate(game->mlx);
 		free_map(game->map);
-		map_error(game, "Failed to load images");
+		map_error(game, "Failed to load images.");
 	}
 	locate_player(game);
 }
-int	main(int ac, char **av)
+/*int	main(int ac, char **av)
 {
 	t_game	*game;
 
@@ -133,8 +133,8 @@ int	main(int ac, char **av)
 	free(game);
 	cleanup_gnl();
 	return (0);
-}
-/*int	main(int ac, char **av)
+}*/
+int	main(int ac, char **av)
 {
 	t_game	*game;
 
@@ -147,7 +147,7 @@ int	main(int ac, char **av)
 	game->map = NULL;
 	game->map = read_map_file(av[1], game);
 	if (!(game->map))
-		map_error(game, "Null map is prohibited");
+		map_error(game, "Null map is not allowed.");
 	game->width = get_map_width(game);
 	game->height = get_map_height(game);
 	check(game);
@@ -162,4 +162,4 @@ int	main(int ac, char **av)
 	free(game);
 	cleanup_gnl();
 	return (0);
-}*/
+}

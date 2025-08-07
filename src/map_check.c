@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarea-k <bvarea-k@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: bgo <bgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 13:15:14 by bvarea-k          #+#    #+#             */
-/*   Updated: 2025/08/06 10:01:03 by bvarea-k         ###   ########.fr       */
+/*   Updated: 2025/08/07 17:00:51 by bgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_extension(char *str)
 
 	len = ft_strlen(str);
 	if (len < 4 || strcmp(str + len - 4, ".ber") != 0)
-		error_exit("The map must have a .ber extension.");
+		error_exit("The map must be a file with a .ber extension.");
 }
 
 void	check(t_game *game)
@@ -28,8 +28,6 @@ void	check(t_game *game)
 
 	x = 0;
 	y = 0;
-	if (game->height == game->width)
-		map_error(game, "The map must be rectangular.");
 	while (x < game->width)
 	{
 		if (game->map[0][x] != '1' || game->map[game->height - 1][x] != '1')
