@@ -6,7 +6,7 @@
 /*   By: bgo <bgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 09:12:02 by bvarea-k          #+#    #+#             */
-/*   Updated: 2025/08/07 16:42:54 by bgo              ###   ########.fr       */
+/*   Updated: 2025/08/07 17:07:46 by bgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,16 @@ void	ft_init_game(t_game *game)
 	cleanup_gnl();
 	return (0);
 }*/
+void	extra_main(t_game *game)
+{
+	game->width = get_map_width(game);
+	game->height = get_map_height(game);
+	check(game);
+	check_solvability(game);
+	ft_init_game(game);
+	draw_map(game);
+}
+
 int	main(int ac, char **av)
 {
 	t_game	*game;
@@ -148,12 +158,7 @@ int	main(int ac, char **av)
 	game->map = read_map_file(av[1], game);
 	if (!(game->map))
 		map_error(game, "Null map is not allowed.");
-	game->width = get_map_width(game);
-	game->height = get_map_height(game);
-	check(game);
-	check_solvability(game);
-	ft_init_game(game);
-	draw_map(game);
+	extra_main(game);
 	mlx_key_hook(game->mlx, handle_input, game);
 	mlx_close_hook(game->mlx, (void *)close_game, game);
 	mlx_loop(game->mlx);

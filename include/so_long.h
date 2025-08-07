@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarea-k <bvarea-k@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: bgo <bgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 09:42:21 by bvarea-k          #+#    #+#             */
-/*   Updated: 2025/08/07 10:56:02 by bvarea-k         ###   ########.fr       */
+/*   Updated: 2025/08/07 17:07:12 by bgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void	validate_col_play_exit(t_game *game, int player, int col, int exit);
 void	locate_player(t_game *game);
 void	cleanup_gnl(void);
 int		process_move(t_game *game, int new_x, int new_y);
+void	extra_main(t_game *game);
 
 #endif
