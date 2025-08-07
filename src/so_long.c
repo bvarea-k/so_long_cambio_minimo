@@ -6,7 +6,7 @@
 /*   By: bgo <bgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 09:12:02 by bvarea-k          #+#    #+#             */
-/*   Updated: 2025/08/07 17:07:46 by bgo              ###   ########.fr       */
+/*   Updated: 2025/08/07 20:32:38 by bgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,6 @@ static char	*read_and_join_lines(int fd)
 	}
 	return (joined);
 }
-
-/*char	**read_map_file(const char *file, t_game *game)
-{
-	int		fd;
-	char	*joined;
-	char	**map;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		map_error(game, "Could not open the map");
-	joined = read_and_join_lines(fd);
-	close(fd);
-	if (!joined)
-		return (NULL);
-	map = ft_split(joined, '\n');
-	free(joined);
-	if (!map)
-		return (NULL);
-	return (map);
-}*/
 
 char	**read_map_file(const char *file, t_game *game)
 {
@@ -154,6 +134,7 @@ int	main(int ac, char **av)
 	game = malloc(sizeof(t_game));
 	if (!game)
 		error_exit("Failed to allocate memory for game.");
+	game->moves = 0;
 	game->map = NULL;
 	game->map = read_map_file(av[1], game);
 	if (!(game->map))
